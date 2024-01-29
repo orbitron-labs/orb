@@ -1,0 +1,32 @@
+[components.run]
+
+[components.run.celestia]
+about = "Run Celestia orbit"
+
+[components.run.celestia.light]
+about = "Run Celestia light node"
+binary = "/tmp/orb/celestia/celestia"
+download = "~/orb-p/scripts/run/celestia.sh"
+arguments = ["--arg1"]
+
+[components.run.celestia.bridge]
+about = "Run Celestia bridge node"
+binary = "/tmp/orb/celestia/celestia"
+download = "/tmp/orb/celestia/init.sh"
+arguments = ["--arg1"]
+
+[components.run.avail]
+about = "Run Avail orbit"
+
+[components.run.avail.light]
+about = "Run Avail light node"
+binary = "avail-light"
+download = "/tmp/orb/avail/init.sh"
+arguments = ["--arg3"]
+
+
+[components.init]
+
+[components.init.dymension]
+about = "Initialize dymension orbit"
+download = "~/orb-p/scripts/init/dymension.sh"
