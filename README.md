@@ -15,7 +15,7 @@ Run the installation command
 
 ```bash
   curl -L https://orbitron-labs.github.io/orb/install.sh
-  orb run avail light node
+  orb run avail light
 ```
 
 ## Getting Started

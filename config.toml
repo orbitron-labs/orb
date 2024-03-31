@@ -5,20 +5,20 @@ about = "Run Celestia orbit"
 
 [components.run.celestia.light]
 about = "Run Celestia light node"
-binary = "/tmp/orb/celestia/celestia"
-download = "~/orb-p/scripts/run/celestia.sh"
+binary = "celestia-light"
+download = "~/.orb/scripts/run/celestia.sh"
 
 [components.run.celestia.bridge]
 about = "Run Celestia bridge node"
-binary = "/tmp/orb/celestia/celestia"
-download = "/tmp/orb/celestia/init.sh"
+binary = "celestia-bridge"
+download = "~/.orb/scripts/run/celestia.sh"
 
 [components.run.avail]
 about = "Run Avail orbit"
 
 [components.run.avail.light]
 about = "Run Avail light node"
-binary = "avail-light"
-download = "/tmp/orb/avail/init.sh"
+binary = "orb-avail-light"
+download = "~/.orb/scripts/run/avail.sh"
 
 
