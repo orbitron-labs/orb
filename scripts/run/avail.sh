@@ -31,4 +31,4 @@ sudo chmod +x "$INTERNAL_DIR"
 sudo rm -rf "/tmp/orbavail"
 
 # Handle this in GetStartCmd
-data-avail --dev --rpc-port 9945 --port 30334
+orb-avail-light --dev --rpc-port 9945 --port 30334
