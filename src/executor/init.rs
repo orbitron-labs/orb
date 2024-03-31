@@ -1,0 +1,71 @@
+// src/executor.rs
+
+// use serde_json::Value as JsonValue;
+use std::{
+    io::{BufRead, BufReader},
+    process::{exit, Command, Stdio},
+};
+// use toml::Value as TomlValue;
+
+use crate::config;
+
+pub fn execute_init_command(component_name: &str) {
+    // Load configuration using config::load_config function
+    let config = config::load_config();
+
+    // Access component configuration based on component_name and subcomponent_name
+    let component_config = config
+        .get("components")
+        .and_then(|components| components.get("init"))
+        .and_then(|components| components.get(component_name));
+
+    match component_config {
+        Some(component) => {
+            let download_script = component
+                .get("download")
+                .expect("Download script not found")
+                .as_str()
+                .unwrap();
+
+            println!("Downloading using script: {}", download_script);
+
+            // Execute the download script if provided
+            if !download_script.is_empty() {
+                println!("Running shell script: {}", download_script);
+
+                // Run the shell script and capture its output in real-time
+                let mut cmd = Command::new("sh")
+                    .arg("-c")
+                    .arg(download_script)
+                    .stdout(Stdio::piped())
+                    .spawn()
+                    .expect("Failed to execute download script");
+
+                if let Some(stdout) = cmd.stdout.take() {
+                    let reader = BufReader::new(stdout);
+                    for line in reader.lines() {
+                        if let Ok(line) = line {
+                            println!("{}", line);
+                        }
+                    }
+                }
+
+                let status = cmd.wait().expect("Failed to wait for script completion");
+                if status.success() {
+                    println!("Download script executed successfully");
+                } else {
+                    println!(
+                        "Download script failed with exit code: {}",
+                        status.code().unwrap_or(1)
+                    );
+                }
+            } else {
+                println!("Download path not found in configuration.");
+            }
+        }
+        None => {
+            eprintln!("Component or subcomponent not found in config.toml");
+            exit(1);
+        }
+    }
+}
