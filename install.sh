@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-scripts="~/.orb/scripts"
+scripts="$HOME/.orb/scripts"
 
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m)
@@ -49,15 +49,15 @@ sudo cp "/tmp/orb_bins/orb-${OS}-${ARCH}" "$INTERNAL_DIR/orb"
 sudo chmod +x "$INTERNAL_DIR/orb"
 sudo rm -rf "/tmp/orb_bins"
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/config.toml 2>/dev/null
-mkdir -p ~/.orb && cp config.toml ~/.orb/config.toml
+mkdir -p ~/.orb && sudo cp config.toml ~/.orb/config.toml
 
 # Get celestia script from repo
-curl -O https://orbitron-labs.github.io/orb/scripts/run/celestia.sh 2>/dev/null
-sudo mkdir -p /tmp/orb/celestia && sudo mv celestia.sh $scripts/run/celestia.sh
+curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/celestia.sh 2>/dev/null
+mkdir -p $scripts/run && sudo mv celestia.sh $scripts/run/celestia.sh
 
 # Get avail script from repo
-curl -O https://orbitron-labs.github.io/orb/scripts/run/avail.sh 2>/dev/null
-sudo mkdir -p /tmp/orb/avail && sudo mv avail.sh $scripts/run/avail.sh
+curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/avail.sh 2>/dev/null
+mkdir -p $scripts/run && sudo mv avail.sh $scripts/run/avail.sh
 
 sudo chmod +x $scripts/run/celestia.sh
 sudo chmod +x $scripts/run/avail.sh

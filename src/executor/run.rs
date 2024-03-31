@@ -29,8 +29,8 @@ pub fn execute_run_command(component_name: &str, subcomponent_name: &str) {
                 .as_str()
                 .unwrap();
 
-            println!("Running {} with binary: {}", subcomponent_name, binary);
-            println!("Downloading using script: {}", download_script);
+            // println!("Running {} with binary: {}", subcomponent_name, binary);
+            // println!("Downloading using script: {}", download_script);
 
             // Execute the download script if provided
             if !download_script.is_empty() {
