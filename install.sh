@@ -59,8 +59,13 @@ mkdir -p $scripts/run && sudo mv celestia.sh $scripts/run/celestia.sh
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/avail.sh 2>/dev/null
 mkdir -p $scripts/run && sudo mv avail.sh $scripts/run/avail.sh
 
+# Get avail script from repo
+curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/avail-full.sh 2>/dev/null
+mkdir -p $scripts/run && sudo mv avail-full.sh $scripts/run/avail-full.sh
+
 sudo chmod +x $scripts/run/celestia.sh
 sudo chmod +x $scripts/run/avail.sh
+sudo chmod +x $scripts/run/avail-full.sh
 
 # sudo chmod +x /tmp/orb/celestia/celestia.sh
 echo "✅ orb installed!"
