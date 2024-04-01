@@ -34,7 +34,7 @@ pub fn execute_run_command(component_name: &str, subcomponent_name: &str) {
 
             // Execute the download script if provided
             if !download_script.is_empty() {
-                println!("Running shell script: {}", download_script);
+                // println!("Running shell script: {}", download_script);
 
                 // Run the shell script and capture its output in real-time
                 let mut cmd = Command::new("sh")
