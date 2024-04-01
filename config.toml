@@ -22,3 +22,8 @@ binary = "orb-avail-light"
 download = "~/.orb/scripts/run/avail.sh"
 
 
+[components.run.avail.full]
+about = "Run Avail full node"
+binary = "orb-avail-full"
+# download = "~/.orb/scripts/run/avail-full.sh"
+download = "~/orb/scripts/run/avail-full.sh"
