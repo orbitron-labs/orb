@@ -14,7 +14,7 @@ Orb is a versatile command-line interface (CLI) tool designed to streamline inte
 Run the installation command
 
 ```bash
-  curl -L https://raw.githubusercontent.com/orbitron-labs/orb/main/install.sh
+  curl -L https://raw.githubusercontent.com/orbitron-labs/orb/main/install.sh | bash
   orb run avail light
 ```
 
