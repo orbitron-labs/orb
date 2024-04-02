@@ -65,8 +65,6 @@ mkdir -p $scripts/run && sudo mv avail-full.sh $scripts/run/avail-full.sh
 
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/rollkit_availl.sh 2>/dev/null
 mkdir -p $scripts/run && sudo mv rollkit_availl.sh $scripts/run/rollkit_availl.sh
-curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/configs/avail-config.yaml 2>/dev/null
-mkdir -p $scripts/run/configs && sudo mv avail-config.yaml $scripts/run/configs/avail-config.yaml
 
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/rollkit_gmd.sh 2>/dev/null
 mkdir -p $scripts/run && sudo mv rollkit_gmd.sh $scripts/run/rollkit_gmd.sh
