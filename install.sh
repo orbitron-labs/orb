@@ -33,7 +33,12 @@ chmod +x orb
 sudo mv orb "$INTERNAL_DIR"/orb
 sudo rm -rf $FILE
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/config.toml 2>/dev/null
-mkdir -p ~/.orb && sudo mv config.toml ~/.orb/config.toml
+
+CONFIG_PATH="$HOME/.orb/config.toml"
+if [ -f "$CONFIG_PATH" ]; then
+    sudo rm -f "$CONFIG_PATH"
+fi
+mkdir -p ~/.orb && sudo mv config.toml $CONFIG_PATH
 
 # Get celestia script from repo
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/celestia.sh 2>/dev/null
