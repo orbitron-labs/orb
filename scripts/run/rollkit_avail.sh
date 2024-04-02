@@ -30,6 +30,7 @@ fi
 
 
 DA_LOGS="tmp/data-avail.log"
+mkdir "tmp"
 if [ ! -f "$DA_LOGS" ]; then
     touch "$DA_LOGS"
 fi

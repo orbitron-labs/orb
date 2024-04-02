@@ -74,7 +74,8 @@ mkdir -p $scripts/run && sudo mv rollkit_gmd.sh $scripts/run/rollkit_gmd.sh
 sudo chmod +x $scripts/run/celestia.sh
 sudo chmod +x $scripts/run/avail.sh
 sudo chmod +x $scripts/run/avail-full.sh
-sudo chmod +x $scripts/run/rollkit_gmd
+sudo chmod +x $scripts/run/rollkit_availl.sh
+sudo chmod +x $scripts/run/rollkit_gmd.sh
 
 # sudo chmod +x /tmp/orb/celestia/celestia.sh
 echo "✅ orb installed!"
