@@ -30,7 +30,7 @@ fi
 
 
 DA_LOGS="tmp/data-avail.log"
-mkdir "tmp"
+mkdir -p "tmp"
 if [ ! -f "$DA_LOGS" ]; then
     touch "$DA_LOGS"
 fi
@@ -49,7 +49,10 @@ LOGS="tmp/avail-light.log"
 if [ ! -f "$LOGS" ]; then
     touch "$LOGS"
 fi
-avail-light --network local -c $HOME/.orb/scripts/configs/avail-config.yaml --clean > "$LOGS" 2>&1 &
+echo "$HOME/.orb/scripts/configs/avail-config.yaml"
+# avail-light --network local -c $HOME/.orb/scripts/configs/avail-config.yaml --clean > "$LOGS" 2>&1 &
+avail-light --network local > "$LOGS" 2>&1 &
+
 
 
 # Navigate to the root directory

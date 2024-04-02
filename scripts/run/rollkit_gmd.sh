@@ -4,20 +4,20 @@ set -e
 INTERNAL_DIR="/usr/local/bin"
 
 # check if the binary is already installed
-if [!-f "$INTERNAL_DIR/avail-node" ]; then    
-    OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-    ARCH=$(uname -m)
+if [ ! -f "$INTERNAL_DIR/gmd" ]; then    
+echo "💈 Downloading gmd..."
+    # OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+    # ARCH=$(uname -m)
 
-    if [[ "$ARCH" == "x86_64" ]]; then
-        ARCH="amd64"
-    elif [[ "$ARCH" == "arm64" ]] || [[ "$ARCH" == "aarch64" ]]; then
-        ARCH="arm64"
-    fi
+    # if [[ "$ARCH" == "x86_64" ]]; then
+    #     ARCH="amd64"
+    # elif [[ "$ARCH" == "arm64" ]] || [[ "$ARCH" == "aarch64" ]]; then
+    #     ARCH="arm64"
+    # fi
 
-   FILE="rollkit-gmd-$OS-$ARCH.tar.xz"
+   FILE="rollkit-gmd-linux-amd64.tar.xz"
 
   # Download avail binary
-  echo "💈 Downloading Avail..."
   TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/rollkit-gmd/$FILE"
   curl -sLO "$TGZ_URL" --progress-bar
 
@@ -27,9 +27,6 @@ if [!-f "$INTERNAL_DIR/avail-node" ]; then
   rm $FILE
 
 fi
-
-
-
 
 # set variables for the chain
 VALIDATOR_NAME=validator1
@@ -45,14 +42,10 @@ STAKING_AMOUNT="1000000000stake"
 # to allow users to interact with Celestia's nodes by querying
 # the node's state and broadcasting transactions on the Celestia
 # network. The default port is 26657.
-DA_BLOCK_HEIGHT=$(curl http://localhost:8000/v1/latest_block | jq -r '.latest_block')
-
+DA_BLOCK_HEIGHT=$(curl http://localhost:7000/v1/latest_block | jq -r '.latest_block')
 
 # echo variables for the chain
 echo -e "\n Your DA_BLOCK_HEIGHT is $DA_BLOCK_HEIGHT \n"
-
-# build the gm chain with Rollkit
-ignite chain build
 
 # reset any existing genesis/chain data
 gmd tendermint unsafe-reset-all
