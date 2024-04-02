@@ -11,7 +11,9 @@ elif [[ "$ARCH" == "arm64" ]] || [[ "$ARCH" == "aarch64" ]]; then
     ARCH="arm64"
 fi
 ORB_RELEASE_TAG="v0.1.0"
-GZ_URL="https://github.com/orbitron-labs/orb/releases/download/orb-${ORB_RELEASE_TAG}/orb-${OS}-${ARCH}.zip"
+
+FILE="orb-$OS-$ARCH.tar.xz"
+GZ_URL="https://github.com/orbitron-labs/orb/releases/download/orb-v0.1.0/$FILE"
 
 INTERNAL_DIR="/usr/local/bin/"
 ORB_BIN_PATH="/usr/local/bin/orb"
@@ -20,34 +22,16 @@ if [ -f "$ORB_BIN_PATH" ]; then
     sudo rm -f "$ORB_BIN_PATH"
 fi
 
-# if [ -f "orb-${OS}-${ARCH}.tar.gz" ]; then
-#     sudo rm -f "orb-${OS}-${ARCH}.tar.xz"
-# fi
-
-# if OS is linux then install unzip
-if [[ "$OS" == "linux" ]]; then
-    if which apt > /dev/null; then
-        sudo apt-get update > /dev/null
-        sudo apt-get install unzip > /dev/null
-    elif which apk > /dev/null; then
-        sudo apk update > /dev/null
-        sudo apk add unzip > /dev/null
-        ARCH="arm64_alpine"
-    fi
-fi
-
 
 sudo mkdir -p "/tmp/orb_bins"
 echo "💿 Downloading orb..."
 curl -O -L $GZ_URL --progress-bar
 
-sudo unzip orb-${OS}-${ARCH}.zip -d "/tmp/orb_bins" 2>/dev/null
-# sudo tar -xzf orb-${OS}-${ARCH}.tar.xz -C "/tmp/orb_bins" 2>/dev/null
-
-echo "🔨 Installing orb..."
-sudo cp "/tmp/orb_bins/orb-${OS}-${ARCH}" "$INTERNAL_DIR/orb"
-sudo chmod +x "$INTERNAL_DIR/orb"
-sudo rm -rf "/tmp/orb_bins"
+# sudo unzip orb-${OS}-${ARCH}.zip -d "/tmp/orb_bins" 2>/dev/null
+tar -xf $FILE
+chmod +x orb
+sudo mv orb "$INTERNAL_DIR"/orb
+sudo rm -rf $FILE
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/config.toml 2>/dev/null
 mkdir -p ~/.orb && sudo mv config.toml ~/.orb/config.toml
 
