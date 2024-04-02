@@ -35,9 +35,6 @@ sudo rm -rf $FILE
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/config.toml 2>/dev/null
 
 CONFIG_PATH="$HOME/.orb/config.toml"
-if [ -f "$CONFIG_PATH" ]; then
-    sudo rm -f "$CONFIG_PATH"
-fi
 mkdir -p ~/.orb && sudo mv config.toml $CONFIG_PATH
 
 # Get celestia script from repo
@@ -52,8 +49,8 @@ mkdir -p $scripts/run && sudo mv avail.sh $scripts/run/avail.sh
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/avail-full.sh 2>/dev/null
 mkdir -p $scripts/run && sudo mv avail-full.sh $scripts/run/avail-full.sh
 
-curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/rollkit_availl.sh 2>/dev/null
-mkdir -p $scripts/run && sudo mv rollkit_availl.sh $scripts/run/rollkit_availl.sh
+curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/rollkit_avail.sh 2>/dev/null
+mkdir -p $scripts/run && sudo mv rollkit_avail.sh $scripts/run/rollkit_avail.sh
 
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/rollkit_gmd.sh 2>/dev/null
 mkdir -p $scripts/run && sudo mv rollkit_gmd.sh $scripts/run/rollkit_gmd.sh
@@ -61,7 +58,7 @@ mkdir -p $scripts/run && sudo mv rollkit_gmd.sh $scripts/run/rollkit_gmd.sh
 sudo chmod +x $scripts/run/celestia.sh
 sudo chmod +x $scripts/run/avail.sh
 sudo chmod +x $scripts/run/avail-full.sh
-sudo chmod +x $scripts/run/rollkit_availl.sh
+sudo chmod +x $scripts/run/rollkit_avail.sh
 sudo chmod +x $scripts/run/rollkit_gmd.sh
 
 # sudo chmod +x /tmp/orb/celestia/celestia.sh
