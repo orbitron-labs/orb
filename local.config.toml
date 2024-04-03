@@ -1,0 +1,42 @@
+[components.run]
+
+[components.run.celestia]
+about = "Run Celestia orbit"
+
+[components.run.celestia.light]
+about = "Run Celestia light node"
+binary = "celestia-light"
+download = "scripts/run/celestia.sh"
+
+[components.run.celestia.bridge]
+about = "Run Celestia bridge node"
+binary = "celestia-bridge"
+download = "scripts/run/celestia.sh"
+
+
+[components.run.avail]
+about = "Run Avail orbit"
+
+[components.run.avail.light]
+about = "Run Avail light node"
+binary = "orb-avail-light"
+download = "scripts/run/avail.sh"
+
+[components.run.avail.full]
+about = "Run Avail full node"
+binary = "orb-avail-full"
+download = "scripts/run/avail-full.sh"
+
+
+[components.run.rollkit]
+about = "Run Rollkit orbits"
+
+[components.run.rollkit.avail]
+about = "Run Rollkit avail nodes"
+binary = "orb-rollkit-avail"
+download = "scripts/run/rollkit_avail.sh"
+
+[components.run.rollkit.gmd]
+about = "Run Rollkit gmd nodes"
+binary = "orb-rollkit-gmd"
+download = "scripts/run/rollkit_gmd.sh"

@@ -18,7 +18,7 @@ pub fn execute_run_command(component_name: &str, subcomponent_name: &str) {
 
     match component_config {
         Some(subcomponent) => {
-            let binary = subcomponent
+            let _binary = subcomponent
                 .get("binary")
                 .expect("Binary path not found")
                 .as_str()
