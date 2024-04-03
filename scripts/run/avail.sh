@@ -20,14 +20,15 @@ elif [[ "$ARCH" == "arm64" ]] || [[ "$ARCH" == "aarch64" ]]; then
 fi
 
 # Download avail binary
+FILE="avail-light-$OS-$ARCH.tar.xz"
 echo "💈 Downloading Avail..."
-TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/avail-v1.7.9/avail-${OS}-${ARCH}.zip"
+TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/avail-v1.7.9/$FILE"
 curl -sLO "$TGZ_URL" --progress-bar
 
-unzip -q avail-${OS}-${ARCH}.zip 
-chmod +x avail-light-linux-amd64
-sudo mv avail-light-linux-amd64 "$INTERNAL_DIR"/avail-light
-rm avail-${OS}-${ARCH}.zip
+tar -xf $FILE
+chmod +x avail-light
+sudo mv avail-light "$INTERNAL_DIR"/avail-light
+rm $FILE
 
 # Handle this in GetStartCmd
 avail-light --network goldberg
