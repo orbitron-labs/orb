@@ -2,8 +2,10 @@ use std::{
     io::{BufRead, BufReader},
     process::{exit, Command, Stdio},
 };
+use serde_json::json;
 
 use crate::config;
+use crate::config::API_ENDPOINT;
 
 pub fn execute_run_command(component_name: &str, subcomponent_name: &str) {
     // Load configuration using config::load_config function
@@ -35,6 +37,22 @@ pub fn execute_run_command(component_name: &str, subcomponent_name: &str) {
             // Execute the download script if provided
             if !download_script.is_empty() {
                 // println!("Running shell script: {}", download_script);
+                // Create a JSON payload with the required data
+                let payload = json!({
+                  "orbit": format!("{}-{}", component_name, subcomponent_name),
+                  "component_name": component_name,
+                  "subcomponent_name": subcomponent_name,
+                });
+
+                // Create a new client object
+                let client = reqwest::blocking::Client::new();
+
+                // Send a POST request with the payload
+                let _response = client
+                    .post(format!("{API_ENDPOINT}/save-orbit-run"))
+                    .json(&payload)
+                    .send()
+                    .expect("Failed to send POST request");
 
                 // Run the shell script and capture its output in real-time
                 let mut cmd = Command::new("sh")

@@ -36,7 +36,17 @@ about = "Run Rollkit avail nodes"
 binary = "orb-rollkit-avail"
 download = "scripts/run/rollkit_avail.sh"
 
-[components.run.rollkit.gmd]
-about = "Run Rollkit gmd nodes"
+[components.run.rollkit.gmd-avail]
+about = "Run Rollkit gmd node"
 binary = "orb-rollkit-gmd"
 download = "scripts/run/rollkit_gmd.sh"
+
+[components.run.rollkit.celestia]
+about = "Run Rollkit celestia node"
+binary = "orb-rollkit-avail"
+download = "scripts/run/rollkit_celestia.sh"
+
+[components.run.rollkit.gmd-celestia]
+about = "Run Rollkit gmd nodes"
+binary = "orb-rollkit-gmd"
+download = "scripts/run/rollkit_gmd_celestia.sh"
