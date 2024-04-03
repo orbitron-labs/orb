@@ -1,4 +1,4 @@
-use dirs::home_dir;
+// use dirs::home_dir;
 use std::{
     io::{BufRead, BufReader},
     process::{Command, Stdio},

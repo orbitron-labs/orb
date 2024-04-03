@@ -26,7 +26,7 @@ pub fn create_and_save_wallet(content: &str) -> Result<(), std::io::Error> {
     Ok(())
 }
 
-pub fn read_wallet_file() -> FileResult<Option<String>> {
+pub fn _read_wallet_file() -> FileResult<Option<String>> {
     // Get the user's home directory and construct the file path
     let mut file_path = home_dir().ok_or(std::io::Error::new(
         std::io::ErrorKind::NotFound,
