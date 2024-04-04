@@ -55,7 +55,6 @@ mkdir -p $scripts/run && sudo mv rollkit_avail.sh $scripts/run/rollkit_avail.sh
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/rollkit_gmd.sh 2>/dev/null
 mkdir -p $scripts/run && sudo mv rollkit_gmd.sh $scripts/run/rollkit_gmd.sh
 
-curl https://myapp-orbitron-api.dtxdup.oss-acorn.io/save-orb-install > /dev/null 2>&1
 sudo chmod +x $scripts/run/celestia.sh
 sudo chmod +x $scripts/run/avail.sh
 sudo chmod +x $scripts/run/avail-full.sh

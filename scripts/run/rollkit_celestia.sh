@@ -7,12 +7,12 @@ NODE_STORE=".orb/celestia-arabica"
 # check if the binary is already installed
 if [ -f "$INTERNAL_DIR/celestia" ]; then    
     echo "🚀 Celestia is already installed" 
-    if [ ! -f "$HOME/$NODE_STORE/config.yml" ]; then
+    if [ ! -f "$HOME/.celestia-light-arabica-11/config.yml" ]; then
             # This should be handled in the InitializeConfig code
             mkdir -p $HOME/$NODE_DIR
-            celestia light init --node.store $HOME/$NODE_STORE --p2p.network arabica
+            celestia light init --p2p.network arabica
         fi
-        celestia light start --node.store $HOME/$NODE_STORE --p2p.network arabica
+        celestia light start --p2p.network arabica
     exit 0
 fi
 
@@ -36,11 +36,10 @@ chmod +x avail-light
 sudo mv avail-light "$INTERNAL_DIR"/avail-light
 rm $FILE
 
-if [ ! -f "$HOME/$NODE_STORE/config.yml" ]; then
+if [ ! -f "$HOME/.celestia-light-arabica-11/config.yml" ]; then
     # This should be handled in the InitializeConfig code
-    mkdir -p $HOME/$NODE_DIR
-    celestia light --node.store $HOME/$NODE_STORE --p2p.network arabica
+    celestia light --p2p.network arabica
 fi
 
 # Handle this in GetStartCmd
-celestia light start --node.store $HOME/$NODE_STORE --p2p.network arabica
+celestia light start --p2p.network arabica

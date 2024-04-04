@@ -7,12 +7,12 @@ NODE_STORE=".orb/celestia"
 # check if the binary is already installed
 if [ -f "$INTERNAL_DIR/celestia" ]; then    
     echo "🚀 Celestia is already installed" 
-    if [ ! -f "$HOME/$NODE_STORE/config.yml" ]; then
+    if [ ! -f "$HOME/.celestia-light/config.yml" ]; then
             # This should be handled in the InitializeConfig code
-            mkdir -p $HOME/$NODE_DIR
-            celestia light init --node.store $HOME/$NODE_STORE
+            # mkdir -p $HOME/$NODE_DIR
+            celestia light init 
         fi
-        celestia light start --node.store $HOME/$NODE_STORE
+        celestia light start 
     exit 0
 fi
 
@@ -28,19 +28,18 @@ fi
 # Download avail binary
 FILE="celestia-$OS-$ARCH.tar.xz"
 echo "💈 Downloading Celestia..."
-TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/avail-v1.7.9/$FILE"
+TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/celestia-v0.12.3/$FILE"
 curl -sLO "$TGZ_URL" --progress-bar
 
 tar -xf $FILE
-chmod +x avail-light
-sudo mv avail-light "$INTERNAL_DIR"/avail-light
+chmod +x celestia
+sudo mv celestia "$INTERNAL_DIR"/celestia
 rm $FILE
 
-if [ ! -f "$HOME/$NODE_STORE/config.yml" ]; then
+if [ ! -f "$HOME/.celestia-light/config.yml" ]; then
     # This should be handled in the InitializeConfig code
-    mkdir -p $HOME/$NODE_DIR
-    celestia light --node.store $HOME/$NODE_STORE
+    celestia light init
 fi
 
 # Handle this in GetStartCmd
-celestia light start --node.store $HOME/$NODE_STORE
+celestia light start 

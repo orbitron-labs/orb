@@ -4,8 +4,6 @@ use toml::Value as TomlValue;
 
 use dirs::home_dir;
 
-pub const API_ENDPOINT: &str = "https://myapp-orbitron-api.arq4am.oss-acorn.io";
-
 pub fn load_config() -> TomlValue {
      // Specify the path to your config files
      let local_config_path = "local.config.toml";
