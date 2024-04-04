@@ -2,7 +2,6 @@ use std::{
     io::{BufRead, BufReader},
     process::{exit, Command, Stdio},
 };
-
 use crate::config;
 
 pub fn execute_run_command(component_name: &str, subcomponent_name: &str) {

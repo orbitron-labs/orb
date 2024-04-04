@@ -34,7 +34,7 @@ mkdir -p "tmp"
 if [ ! -f "$DA_LOGS" ]; then
     touch "$DA_LOGS"
 fi
-data-avail --dev --enable-kate-rpc > "$DA_LOGS" 2>&1 &
+data-avail --dev > "$DA_LOGS" 2>&1 &
 
 LOGS="tmp/avail-light-bootstrap.log"
 if [ ! -f "$LOGS" ]; then
@@ -49,7 +49,6 @@ LOGS="tmp/avail-light.log"
 if [ ! -f "$LOGS" ]; then
     touch "$LOGS"
 fi
-echo "$HOME/.orb/scripts/configs/avail-config.yaml"
 # avail-light --network local -c $HOME/.orb/scripts/configs/avail-config.yaml --clean > "$LOGS" 2>&1 &
 avail-light --network local > "$LOGS" 2>&1 &
 

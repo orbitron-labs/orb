@@ -2,17 +2,17 @@
 set -e
 
 INTERNAL_DIR="/usr/local/bin"
-NODE_STORE=".orb/celestia"
+NODE_STORE=".orb/celestia-arabica"
 
 # check if the binary is already installed
 if [ -f "$INTERNAL_DIR/celestia" ]; then    
     echo "🚀 Celestia is already installed" 
-    if [ ! -f "$HOME/.celestia-light/config.yml" ]; then
+    if [ ! -f "$HOME/.celestia-light-arabica-11/config.yml" ]; then
             # This should be handled in the InitializeConfig code
-            # mkdir -p $HOME/$NODE_DIR
-            celestia light init 
+            mkdir -p $HOME/$NODE_DIR
+            celestia light init --p2p.network arabica
         fi
-        celestia light start 
+        celestia light start --p2p.network arabica
     exit 0
 fi
 
@@ -28,18 +28,18 @@ fi
 # Download avail binary
 FILE="celestia-$OS-$ARCH.tar.xz"
 echo "💈 Downloading Celestia..."
-TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/celestia-v0.12.3/$FILE"
+TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/avail-v1.7.9/$FILE"
 curl -sLO "$TGZ_URL" --progress-bar
 
 tar -xf $FILE
-chmod +x celestia
-sudo mv celestia "$INTERNAL_DIR"/celestia
+chmod +x avail-light
+sudo mv avail-light "$INTERNAL_DIR"/avail-light
 rm $FILE
 
-if [ ! -f "$HOME/.celestia-light/config.yml" ]; then
+if [ ! -f "$HOME/.celestia-light-arabica-11/config.yml" ]; then
     # This should be handled in the InitializeConfig code
-    celestia light init
+    celestia light --p2p.network arabica
 fi
 
 # Handle this in GetStartCmd
-celestia light start 
+celestia light start --p2p.network arabica
