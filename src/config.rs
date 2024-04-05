@@ -1,8 +1,9 @@
 use std::fs::File;
 use std::io::Read;
 use toml::Value as TomlValue;
-
 use dirs::home_dir;
+
+pub const API_ENDPOINT: &str = "http://57.151.52.101:8080";
 
 pub fn load_config() -> TomlValue {
      // Specify the path to your config files
