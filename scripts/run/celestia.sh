@@ -28,7 +28,7 @@ fi
 # Download avail binary
 FILE="celestia-$OS-$ARCH.tar.xz"
 echo "💈 Downloading Celestia..."
-TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/celestia-v0.12.3/$FILE"
+TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/celestia-v0.13.2/$FILE"
 curl -sLO "$TGZ_URL" --progress-bar
 
 tar -xf $FILE

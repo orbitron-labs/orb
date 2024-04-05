@@ -25,6 +25,7 @@ if [ ! -f "$INTERNAL_DIR/avail-da" ]; then
     tar -xf $FILE
     chmod +x rollkit-avail-linux-amd64/*
     sudo mv rollkit-avail-linux-amd64/* "$INTERNAL_DIR"/
+    rm -rf rollkit-avail-linux-amd64
     rm $FILE
 fi
 

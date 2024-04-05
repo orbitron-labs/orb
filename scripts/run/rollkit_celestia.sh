@@ -12,7 +12,7 @@ if [ -f "$INTERNAL_DIR/celestia" ]; then
             mkdir -p $HOME/$NODE_DIR
             celestia light init --p2p.network arabica
         fi
-        celestia light start --p2p.network arabica
+        celestia light start --p2p.network arabica --core.ip validator-1.celestia-arabica-11.com
     exit 0
 fi
 
@@ -25,15 +25,15 @@ elif [[ "$ARCH" == "arm64" ]] || [[ "$ARCH" == "aarch64" ]]; then
     ARCH="arm64"
 fi
 
-# Download avail binary
+# Download celestia binary
 FILE="celestia-$OS-$ARCH.tar.xz"
 echo "💈 Downloading Celestia..."
-TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/avail-v1.7.9/$FILE"
+TGZ_URL="https://github.com/orbitron-labs/orb/releases/download/celestia-v0.13.2/$FILE"
 curl -sLO "$TGZ_URL" --progress-bar
 
 tar -xf $FILE
-chmod +x avail-light
-sudo mv avail-light "$INTERNAL_DIR"/avail-light
+chmod +x celestia
+sudo mv celestia "$INTERNAL_DIR"/celestia
 rm $FILE
 
 if [ ! -f "$HOME/.celestia-light-arabica-11/config.yml" ]; then
@@ -42,4 +42,4 @@ if [ ! -f "$HOME/.celestia-light-arabica-11/config.yml" ]; then
 fi
 
 # Handle this in GetStartCmd
-celestia light start --p2p.network arabica
+celestia light start --p2p.network arabica --core.ip validator-1.celestia-arabica-11.com
