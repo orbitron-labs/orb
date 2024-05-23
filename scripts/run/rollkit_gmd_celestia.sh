@@ -44,7 +44,7 @@ STAKING_AMOUNT="1000000000stake"
 DA_BLOCK_HEIGHT=$(curl https://rpc.celestia-arabica-11.com/block | jq -r '.result.block.header.height')
 echo -e "\n Your DA_BLOCK_HEIGHT is $DA_BLOCK_HEIGHT \n"
 
-AUTH_TOKEN=$(celestia light auth write --p2p.network arabica)
+AUTH_TOKEN=$(cel-gmd light auth write --p2p.network arabica)
 echo -e "\n Your DA AUTH_TOKEN is $AUTH_TOKEN \n"
 
 # reset any existing genesis/chain data
