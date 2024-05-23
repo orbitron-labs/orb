@@ -58,8 +58,8 @@ mkdir -p $scripts/run && sudo mv rollkit_gmd.sh $scripts/run/rollkit_gmd.sh
 curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/rollkit_celestia.sh 2>/dev/null
 mkdir -p $scripts/run && sudo mv rollkit_celestia.sh $scripts/run/rollkit_celestia.sh
 
-curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/rollkit_gmd_celestia.sh.sh 2>/dev/null
-mkdir -p $scripts/run && sudo mv rollkit_gmd_celestia.sh.sh $scripts/run/rollkit_gmd_celestia.sh.sh
+curl -O https://raw.githubusercontent.com/orbitron-labs/orb/main/scripts/run/rollkit_gmd_celestia.sh 2>/dev/null
+mkdir -p $scripts/run && sudo mv rollkit_gmd_celestia.sh.sh $scripts/run/rollkit_gmd_celestia.sh
 
 curl -X POST http://57.151.52.101:8080/save-orb-install > /dev/null 2>&1
 sudo chmod +x $scripts/run/celestia.sh
