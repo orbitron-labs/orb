@@ -44,7 +44,7 @@ STAKING_AMOUNT="1000000000stake"
 DA_BLOCK_HEIGHT=$(curl https://rpc.lunaroasis.net/block | jq -r '.result.block.header.height')
 echo -e "\n Your DA_BLOCK_HEIGHT is $DA_BLOCK_HEIGHT \n"
 
-AUTH_TOKEN=$(celestia light auth write --p2p.network celestia)
+AUTH_TOKEN=$(celestia light auth write --p2p.network arabica)
 echo -e "\n Your DA AUTH_TOKEN is $AUTH_TOKEN \n"
 
 # reset any existing genesis/chain data
@@ -73,10 +73,10 @@ ADDRESS=$(jq -r '.address' ~/.gm/config/priv_validator_key.json)
 PUB_KEY=$(jq -r '.pub_key' ~/.gm/config/priv_validator_key.json)
 jq --argjson pubKey "$PUB_KEY" '.consensus["validators"]=[{"address": "'$ADDRESS'", "pub_key": $pubKey, "power": "1000", "name": "Rollkit Sequencer"}]' ~/.gm/config/genesis.json > temp.json && mv temp.json ~/.gm/config/genesis.json
 
-# create a restart-testnet.sh file to restart the chain later
-[ -f restart-testnet.sh ] && rm restart-testnet.sh
-echo "DA_BLOCK_HEIGHT=$DA_BLOCK_HEIGHT" >> restart-testnet.sh
-echo "AUTH_TOKEN=$AUTH_TOKEN" >> restart-testnet.sh
+# create a restart-mainnet.sh file to restart the chain later
+[ -f restart-mainnet.sh ] && rm restart-mainnet.sh
+echo "DA_BLOCK_HEIGHT=$DA_BLOCK_HEIGHT" >> restart-mainnet.sh
+echo "AUTH_TOKEN=$AUTH_TOKEN" >> restart-mainnet.sh
 
 echo "cel-gmd start --rollkit.aggregator --rollkit.da_auth_token=\$AUTH_TOKEN --rollkit.da_namespace 00000000000000000000000000000000000000000008e5f679bf7116cb --rollkit.da_start_height \$DA_BLOCK_HEIGHT --rpc.laddr tcp://127.0.0.1:36657 --grpc.address 127.0.0.1:9290 --p2p.laddr \"0.0.0.0:36656\" --minimum-gas-prices="0.025stake"" >> restart-testnet.sh
 

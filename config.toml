@@ -50,3 +50,14 @@ download = "~/.orb/scripts/run/rollkit_celestia.sh"
 about = "Run Rollkit gmd nodes"
 binary = "orb-rollkit-gmd"
 download = "~/.orb/scripts/run/rollkit_gmd_celestia.sh"
+
+[components.run.rollkit.celestia-mainnet]
+about = "Run Rollkit celestia node"
+binary = "orb-rollkit-avail"
+download = "~/.orb/scripts/run/rollkit_celestia_mainnet.sh"
+
+[components.run.rollkit.gmd-celestia-mainnet]
+about = "Run Rollkit gmd nodes"
+binary = "orb-rollkit-gmd"
+download = "~/.orb/scripts/run/rollkit_gmd_celestia_mainnet.sh"
+
