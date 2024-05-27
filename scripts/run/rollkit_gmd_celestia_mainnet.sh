@@ -40,11 +40,11 @@ STAKING_AMOUNT="1000000000stake"
 # an RPC endpoint provided by Celestia Labs. The RPC endpoint is
 # to allow users to interact with Celestia's core network by querying
 # the node's state and broadcasting transactions on the Celestia
-# network. This is for Arabica, if using another network, change the RPC.
+# network. This is for celestia, if using another network, change the RPC.
 DA_BLOCK_HEIGHT=$(curl https://rpc.lunaroasis.net/block | jq -r '.result.block.header.height')
 echo -e "\n Your DA_BLOCK_HEIGHT is $DA_BLOCK_HEIGHT \n"
 
-AUTH_TOKEN=$(celestia light auth write --p2p.network arabica)
+AUTH_TOKEN=$(celestia light auth write --p2p.network celestia)
 echo -e "\n Your DA AUTH_TOKEN is $AUTH_TOKEN \n"
 
 # reset any existing genesis/chain data
